@@ -2,7 +2,7 @@
 
 **Needs to be improved**
 
-## Prequisites
+## Prerequisites
 Need to have graphiz installed on the machine. Refer to 
 - https://graphviz.readthedocs.io/en/stable/manual.html#installation
 - https://www.graphviz.org/download/
