@@ -1,0 +1,158 @@
+{
+  "explainVersion": "1",
+  "queryPlanner": {
+    "namespace": "data.people",
+    "indexFilterSet": false,
+    "parsedQuery": {
+      "name": {
+        "$gt": "A"
+      }
+    },
+    "maxIndexedOrSolutionsReached": false,
+    "maxIndexedAndSolutionsReached": false,
+    "maxScansToExplodeReached": false,
+    "winningPlan": {
+      "stage": "FETCH",
+      "inputStage": {
+        "stage": "IXSCAN",
+        "keyPattern": {
+          "name": 1
+        },
+        "indexName": "name_1",
+        "isMultiKey": false,
+        "multiKeyPaths": {
+          "name": []
+        },
+        "isUnique": false,
+        "isSparse": false,
+        "isPartial": false,
+        "indexVersion": 2,
+        "direction": "forward",
+        "indexBounds": {
+          "name": [
+            "(\"A\", {})"
+          ]
+        }
+      }
+    },
+    "rejectedPlans": []
+  },
+  "executionStats": {
+    "executionSuccess": true,
+    "nReturned": 3,
+    "executionTimeMillis": 0,
+    "totalKeysExamined": 3,
+    "totalDocsExamined": 3,
+    "executionStages": {
+      "stage": "FETCH",
+      "nReturned": 3,
+      "executionTimeMillisEstimate": 0,
+      "works": 4,
+      "advanced": 3,
+      "needTime": 0,
+      "needYield": 0,
+      "saveState": 0,
+      "restoreState": 0,
+      "isEOF": 1,
+      "docsExamined": 3,
+      "alreadyHasObj": 0,
+      "inputStage": {
+        "stage": "IXSCAN",
+        "nReturned": 3,
+        "executionTimeMillisEstimate": 0,
+        "works": 4,
+        "advanced": 3,
+        "needTime": 0,
+        "needYield": 0,
+        "saveState": 0,
+        "restoreState": 0,
+        "isEOF": 1,
+        "keyPattern": {
+          "name": 1
+        },
+        "indexName": "name_1",
+        "isMultiKey": false,
+        "multiKeyPaths": {
+          "name": []
+        },
+        "isUnique": false,
+        "isSparse": false,
+        "isPartial": false,
+        "indexVersion": 2,
+        "direction": "forward",
+        "indexBounds": {
+          "name": [
+            "(\"A\", {})"
+          ]
+        },
+        "keysExamined": 3,
+        "seeks": 1,
+        "dupsTested": 0,
+        "dupsDropped": 0
+      }
+    }
+  },
+  "command": {
+    "find": "people",
+    "filter": {
+      "name": {
+        "$gt": "A"
+      }
+    },
+    "$db": "data"
+  },
+  "serverInfo": {
+    "host": "hostname.lan",
+    "port": 27024,
+    "version": "5.0.2",
+    "gitVersion": "6d9ec525e78465dcecadcff99cce953d380fedc8"
+  },
+  "serverParameters": {
+    "internalQueryFacetBufferSizeBytes": 104857600,
+    "internalQueryFacetMaxOutputDocSizeBytes": 104857600,
+    "internalLookupStageIntermediateDocumentMaxSizeBytes": 104857600,
+    "internalDocumentSourceGroupMaxMemoryBytes": 104857600,
+    "internalQueryMaxBlockingSortMemoryUsageBytes": 104857600,
+    "internalQueryProhibitBlockingMergeOnMongoS": 0,
+    "internalQueryMaxAddToSetBytes": 104857600,
+    "internalDocumentSourceSetWindowFieldsMaxMemoryBytes": 104857600
+  },
+  "ok": 1,
+  "$gleStats": {
+    "lastOpTime": {
+      "$timestamp": "0"
+    },
+    "electionId": "7fffffff0000000000000004"
+  },
+  "lastCommittedOpTime": {
+    "$timestamp": "7012215872353730561"
+  },
+  "$configServerState": {
+    "opTime": {
+      "ts": {
+        "$timestamp": "7012215889533599745"
+      },
+      "t": {
+        "low": -1,
+        "high": -1,
+        "unsigned": false
+      }
+    }
+  },
+  "$clusterTime": {
+    "clusterTime": {
+      "$timestamp": "7012215889533599745"
+    },
+    "signature": {
+      "hash": "AAAAAAAAAAAAAAAAAAAAAAAAAAA=",
+      "keyId": {
+        "low": 0,
+        "high": 0,
+        "unsigned": false
+      }
+    }
+  },
+  "operationTime": {
+    "$timestamp": "7012215872353730561"
+  }
+}

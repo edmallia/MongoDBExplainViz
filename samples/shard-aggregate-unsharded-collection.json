@@ -1,0 +1,202 @@
+{
+  "serverInfo": {
+    "host": "hostname.lan",
+    "port": 27017,
+    "version": "5.0.2",
+    "gitVersion": "6d9ec525e78465dcecadcff99cce953d380fedc8"
+  },
+  "serverParameters": {
+    "internalQueryFacetBufferSizeBytes": 104857600,
+    "internalQueryFacetMaxOutputDocSizeBytes": 104857600,
+    "internalLookupStageIntermediateDocumentMaxSizeBytes": 104857600,
+    "internalDocumentSourceGroupMaxMemoryBytes": 104857600,
+    "internalQueryMaxBlockingSortMemoryUsageBytes": 104857600,
+    "internalQueryProhibitBlockingMergeOnMongoS": 0,
+    "internalQueryMaxAddToSetBytes": 104857600,
+    "internalDocumentSourceSetWindowFieldsMaxMemoryBytes": 104857600
+  },
+  "explainVersion": "1",
+  "stages": [
+    {
+      "$cursor": {
+        "queryPlanner": {
+          "namespace": "data.unsharded",
+          "indexFilterSet": false,
+          "parsedQuery": {
+            "name": {
+              "$gt": "A"
+            }
+          },
+          "queryHash": "C10F5309",
+          "planCacheKey": "2D4E7D66",
+          "maxIndexedOrSolutionsReached": false,
+          "maxIndexedAndSolutionsReached": false,
+          "maxScansToExplodeReached": false,
+          "winningPlan": {
+            "stage": "PROJECTION_SIMPLE",
+            "transformBy": {
+              "age": 1,
+              "_id": 0
+            },
+            "inputStage": {
+              "stage": "COLLSCAN",
+              "filter": {
+                "name": {
+                  "$gt": "A"
+                }
+              },
+              "direction": "forward"
+            }
+          },
+          "rejectedPlans": []
+        },
+        "executionStats": {
+          "executionSuccess": true,
+          "nReturned": 3,
+          "executionTimeMillis": 5,
+          "totalKeysExamined": 0,
+          "totalDocsExamined": 3,
+          "executionStages": {
+            "stage": "PROJECTION_SIMPLE",
+            "nReturned": 3,
+            "executionTimeMillisEstimate": 0,
+            "works": 5,
+            "advanced": 3,
+            "needTime": 1,
+            "needYield": 0,
+            "saveState": 1,
+            "restoreState": 1,
+            "isEOF": 1,
+            "transformBy": {
+              "age": 1,
+              "_id": 0
+            },
+            "inputStage": {
+              "stage": "COLLSCAN",
+              "filter": {
+                "name": {
+                  "$gt": "A"
+                }
+              },
+              "nReturned": 3,
+              "executionTimeMillisEstimate": 0,
+              "works": 5,
+              "advanced": 3,
+              "needTime": 1,
+              "needYield": 0,
+              "saveState": 1,
+              "restoreState": 1,
+              "isEOF": 1,
+              "direction": "forward",
+              "docsExamined": 3
+            }
+          }
+        }
+      },
+      "nReturned": {
+        "low": 3,
+        "high": 0,
+        "unsigned": false
+      },
+      "executionTimeMillisEstimate": {
+        "low": 0,
+        "high": 0,
+        "unsigned": false
+      }
+    },
+    {
+      "$group": {
+        "_id": {
+          "$const": null
+        },
+        "avgAge": {
+          "$avg": "$age"
+        }
+      },
+      "maxAccumulatorMemoryUsageBytes": {
+        "avgAge": {
+          "low": 80,
+          "high": 0,
+          "unsigned": false
+        }
+      },
+      "totalOutputDataSizeBytes": {
+        "low": 229,
+        "high": 0,
+        "unsigned": false
+      },
+      "usedDisk": false,
+      "nReturned": {
+        "low": 1,
+        "high": 0,
+        "unsigned": false
+      },
+      "executionTimeMillisEstimate": {
+        "low": 0,
+        "high": 0,
+        "unsigned": false
+      }
+    },
+    {
+      "$project": {
+        "_id": false
+      },
+      "nReturned": {
+        "low": 1,
+        "high": 0,
+        "unsigned": false
+      },
+      "executionTimeMillisEstimate": {
+        "low": 0,
+        "high": 0,
+        "unsigned": false
+      }
+    }
+  ],
+  "command": {
+    "aggregate": "unsharded",
+    "pipeline": [
+      {
+        "$match": {
+          "name": {
+            "$gt": "A"
+          }
+        }
+      },
+      {
+        "$group": {
+          "_id": null,
+          "avgAge": {
+            "$avg": "$age"
+          }
+        }
+      },
+      {
+        "$project": {
+          "_id": 0
+        }
+      }
+    ],
+    "cursor": {},
+    "let": {},
+    "fromMongos": false,
+    "$db": "data"
+  },
+  "ok": 1,
+  "$clusterTime": {
+    "clusterTime": {
+      "$timestamp": "7012209859399516162"
+    },
+    "signature": {
+      "hash": "AAAAAAAAAAAAAAAAAAAAAAAAAAA=",
+      "keyId": {
+        "low": 0,
+        "high": 0,
+        "unsigned": false
+      }
+    }
+  },
+  "operationTime": {
+    "$timestamp": "7012209829334745089"
+  }
+}

@@ -1,0 +1,145 @@
+{
+  "queryPlanner": {
+    "mongosPlannerVersion": 1,
+    "winningPlan": {
+      "stage": "SINGLE_SHARD",
+      "shards": [
+        {
+          "shardName": "tac",
+          "connectionString": "tac/localhost:27021,localhost:27022,localhost:27023",
+          "serverInfo": {
+            "host": "hostname.lan",
+            "port": 27021,
+            "version": "5.0.2",
+            "gitVersion": "6d9ec525e78465dcecadcff99cce953d380fedc8"
+          },
+          "namespace": "data.unsharded",
+          "indexFilterSet": false,
+          "parsedQuery": {
+            "name": {
+              "$gt": "A"
+            }
+          },
+          "maxIndexedOrSolutionsReached": false,
+          "maxIndexedAndSolutionsReached": false,
+          "maxScansToExplodeReached": false,
+          "winningPlan": {
+            "stage": "COLLSCAN",
+            "filter": {
+              "name": {
+                "$gt": "A"
+              }
+            },
+            "direction": "forward"
+          },
+          "rejectedPlans": []
+        }
+      ]
+    }
+  },
+  "executionStats": {
+    "nReturned": 3,
+    "executionTimeMillis": 0,
+    "totalKeysExamined": 0,
+    "totalDocsExamined": 3,
+    "executionStages": {
+      "stage": "SINGLE_SHARD",
+      "nReturned": 3,
+      "executionTimeMillis": 0,
+      "totalKeysExamined": 0,
+      "totalDocsExamined": 3,
+      "totalChildMillis": {
+        "low": 0,
+        "high": 0,
+        "unsigned": false
+      },
+      "shards": [
+        {
+          "shardName": "tac",
+          "executionSuccess": true,
+          "nReturned": 3,
+          "executionTimeMillis": 0,
+          "totalKeysExamined": 0,
+          "totalDocsExamined": 3,
+          "executionStages": {
+            "stage": "COLLSCAN",
+            "filter": {
+              "name": {
+                "$gt": "A"
+              }
+            },
+            "nReturned": 3,
+            "executionTimeMillisEstimate": 0,
+            "works": 5,
+            "advanced": 3,
+            "needTime": 1,
+            "needYield": 0,
+            "saveState": 0,
+            "restoreState": 0,
+            "isEOF": 1,
+            "direction": "forward",
+            "docsExamined": 3
+          }
+        }
+      ]
+    }
+  },
+  "serverInfo": {
+    "host": "hostname.lan",
+    "port": 27017,
+    "version": "5.0.2",
+    "gitVersion": "6d9ec525e78465dcecadcff99cce953d380fedc8"
+  },
+  "serverParameters": {
+    "internalQueryFacetBufferSizeBytes": 104857600,
+    "internalQueryFacetMaxOutputDocSizeBytes": 104857600,
+    "internalLookupStageIntermediateDocumentMaxSizeBytes": 104857600,
+    "internalDocumentSourceGroupMaxMemoryBytes": 104857600,
+    "internalQueryMaxBlockingSortMemoryUsageBytes": 104857600,
+    "internalQueryProhibitBlockingMergeOnMongoS": 0,
+    "internalQueryMaxAddToSetBytes": 104857600,
+    "internalDocumentSourceSetWindowFieldsMaxMemoryBytes": 104857600
+  },
+  "command": {
+    "find": "unsharded",
+    "filter": {
+      "name": {
+        "$gt": "A"
+      }
+    },
+    "lsid": {
+      "id": "/O9nVBfVTe69AlA4uUhY7g=="
+    },
+    "$clusterTime": {
+      "clusterTime": {
+        "$timestamp": "7012148583101104129"
+      },
+      "signature": {
+        "hash": "AAAAAAAAAAAAAAAAAAAAAAAAAAA=",
+        "keyId": {
+          "low": 0,
+          "high": 0,
+          "unsigned": false
+        }
+      }
+    },
+    "$db": "data"
+  },
+  "ok": 1,
+  "$clusterTime": {
+    "clusterTime": {
+      "$timestamp": "7012150064864821250"
+    },
+    "signature": {
+      "hash": "AAAAAAAAAAAAAAAAAAAAAAAAAAA=",
+      "keyId": {
+        "low": 0,
+        "high": 0,
+        "unsigned": false
+      }
+    }
+  },
+  "operationTime": {
+    "$timestamp": "7012150039095017473"
+  }
+}

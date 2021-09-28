@@ -1,0 +1,265 @@
+{
+  "explainVersion": "1",
+  "stages": [
+    {
+      "$cursor": {
+        "queryPlanner": {
+          "namespace": "data.people",
+          "indexFilterSet": false,
+          "parsedQuery": {
+            "name": {
+              "$gt": "A"
+            }
+          },
+          "queryHash": "C10F5309",
+          "planCacheKey": "9665C3EE",
+          "maxIndexedOrSolutionsReached": false,
+          "maxIndexedAndSolutionsReached": false,
+          "maxScansToExplodeReached": false,
+          "winningPlan": {
+            "stage": "PROJECTION_SIMPLE",
+            "transformBy": {
+              "age": 1,
+              "_id": 0
+            },
+            "inputStage": {
+              "stage": "FETCH",
+              "inputStage": {
+                "stage": "IXSCAN",
+                "keyPattern": {
+                  "name": 1
+                },
+                "indexName": "name_1",
+                "isMultiKey": false,
+                "multiKeyPaths": {
+                  "name": []
+                },
+                "isUnique": false,
+                "isSparse": false,
+                "isPartial": false,
+                "indexVersion": 2,
+                "direction": "forward",
+                "indexBounds": {
+                  "name": [
+                    "(\"A\", {})"
+                  ]
+                }
+              }
+            }
+          },
+          "rejectedPlans": []
+        },
+        "executionStats": {
+          "executionSuccess": true,
+          "nReturned": 3,
+          "executionTimeMillis": 0,
+          "totalKeysExamined": 3,
+          "totalDocsExamined": 3,
+          "executionStages": {
+            "stage": "PROJECTION_SIMPLE",
+            "nReturned": 3,
+            "executionTimeMillisEstimate": 0,
+            "works": 4,
+            "advanced": 3,
+            "needTime": 0,
+            "needYield": 0,
+            "saveState": 1,
+            "restoreState": 1,
+            "isEOF": 1,
+            "transformBy": {
+              "age": 1,
+              "_id": 0
+            },
+            "inputStage": {
+              "stage": "FETCH",
+              "nReturned": 3,
+              "executionTimeMillisEstimate": 0,
+              "works": 4,
+              "advanced": 3,
+              "needTime": 0,
+              "needYield": 0,
+              "saveState": 1,
+              "restoreState": 1,
+              "isEOF": 1,
+              "docsExamined": 3,
+              "alreadyHasObj": 0,
+              "inputStage": {
+                "stage": "IXSCAN",
+                "nReturned": 3,
+                "executionTimeMillisEstimate": 0,
+                "works": 4,
+                "advanced": 3,
+                "needTime": 0,
+                "needYield": 0,
+                "saveState": 1,
+                "restoreState": 1,
+                "isEOF": 1,
+                "keyPattern": {
+                  "name": 1
+                },
+                "indexName": "name_1",
+                "isMultiKey": false,
+                "multiKeyPaths": {
+                  "name": []
+                },
+                "isUnique": false,
+                "isSparse": false,
+                "isPartial": false,
+                "indexVersion": 2,
+                "direction": "forward",
+                "indexBounds": {
+                  "name": [
+                    "(\"A\", {})"
+                  ]
+                },
+                "keysExamined": 3,
+                "seeks": 1,
+                "dupsTested": 0,
+                "dupsDropped": 0
+              }
+            }
+          }
+        }
+      },
+      "nReturned": {
+        "low": 3,
+        "high": 0,
+        "unsigned": false
+      },
+      "executionTimeMillisEstimate": {
+        "low": 0,
+        "high": 0,
+        "unsigned": false
+      }
+    },
+    {
+      "$group": {
+        "_id": {
+          "$const": null
+        },
+        "avgAge": {
+          "$avg": "$age"
+        }
+      },
+      "maxAccumulatorMemoryUsageBytes": {
+        "avgAge": {
+          "low": 80,
+          "high": 0,
+          "unsigned": false
+        }
+      },
+      "totalOutputDataSizeBytes": {
+        "low": 229,
+        "high": 0,
+        "unsigned": false
+      },
+      "usedDisk": false,
+      "nReturned": {
+        "low": 1,
+        "high": 0,
+        "unsigned": false
+      },
+      "executionTimeMillisEstimate": {
+        "low": 0,
+        "high": 0,
+        "unsigned": false
+      }
+    },
+    {
+      "$project": {
+        "_id": false
+      },
+      "nReturned": {
+        "low": 1,
+        "high": 0,
+        "unsigned": false
+      },
+      "executionTimeMillisEstimate": {
+        "low": 0,
+        "high": 0,
+        "unsigned": false
+      }
+    }
+  ],
+  "serverInfo": {
+    "host": "hostname.lan",
+    "port": 27024,
+    "version": "5.0.2",
+    "gitVersion": "6d9ec525e78465dcecadcff99cce953d380fedc8"
+  },
+  "serverParameters": {
+    "internalQueryFacetBufferSizeBytes": 104857600,
+    "internalQueryFacetMaxOutputDocSizeBytes": 104857600,
+    "internalLookupStageIntermediateDocumentMaxSizeBytes": 104857600,
+    "internalDocumentSourceGroupMaxMemoryBytes": 104857600,
+    "internalQueryMaxBlockingSortMemoryUsageBytes": 104857600,
+    "internalQueryProhibitBlockingMergeOnMongoS": 0,
+    "internalQueryMaxAddToSetBytes": 104857600,
+    "internalDocumentSourceSetWindowFieldsMaxMemoryBytes": 104857600
+  },
+  "command": {
+    "aggregate": "people",
+    "pipeline": [
+      {
+        "$match": {
+          "name": {
+            "$gt": "A"
+          }
+        }
+      },
+      {
+        "$group": {
+          "_id": null,
+          "avgAge": {
+            "$avg": "$age"
+          }
+        }
+      },
+      {
+        "$project": {
+          "_id": 0
+        }
+      }
+    ],
+    "cursor": {},
+    "$db": "data"
+  },
+  "ok": 1,
+  "$gleStats": {
+    "lastOpTime": {
+      "$timestamp": "0"
+    },
+    "electionId": "7fffffff0000000000000004"
+  },
+  "lastCommittedOpTime": {
+    "$timestamp": "7012215399907328001"
+  },
+  "$configServerState": {
+    "opTime": {
+      "ts": {
+        "$timestamp": "7012215417087197185"
+      },
+      "t": {
+        "low": -1,
+        "high": -1,
+        "unsigned": false
+      }
+    }
+  },
+  "$clusterTime": {
+    "clusterTime": {
+      "$timestamp": "7012215417087197185"
+    },
+    "signature": {
+      "hash": "AAAAAAAAAAAAAAAAAAAAAAAAAAA=",
+      "keyId": {
+        "low": 0,
+        "high": 0,
+        "unsigned": false
+      }
+    }
+  },
+  "operationTime": {
+    "$timestamp": "7012215399907328001"
+  }
+}
